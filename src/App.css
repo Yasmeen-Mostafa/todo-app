@@ -1,4 +1,18 @@
 .todo__cards {
-  columns: 4 200px;
-  margin: 50px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 10px;
+  justify-content: space-evenly;
+}
+.App {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .todo__cards {
+    margin: 20px 50px;
+    flex-wrap: nowrap;
+  }
 }

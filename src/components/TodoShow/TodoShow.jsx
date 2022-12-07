@@ -58,12 +58,14 @@ const TodoShow = ({ todo, onDelete, onEdit }) => {
           </h3>
         )}
       </div>
-      <button onClick={onDeleteClick} className="delete">
-        X
-      </button>
-      <button onClick={onEditClick} className="edit">
-        📝
-      </button>
+      <div className="edit__delete">
+        <button onClick={onEditClick} className="edit">
+          📝
+        </button>
+        <button onClick={onDeleteClick} className="delete">
+          X
+        </button>
+      </div>
     </div>
   );
 };

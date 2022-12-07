@@ -1,14 +1,11 @@
 import { useState } from "react";
 import "./App.css";
 import TodoCard from "./components/TodoCard/TodoCard";
-
 import TodoForm from "./components/TodoForm/TodoForm";
-import TodoList from "./components/TodoList/TodoList";
 function App() {
   const [todos, setTodos] = useState([]); //array of objects, each object inside todos is a todo=>todo name, priority
   const handleTodoForm = (todo) => {
     //recieve todo object from TodoForm
-    // console.log([...todos, todo]);
     if (todo.todo && todo.priority) {
       setTodos([...todos, todo]);
     }
@@ -21,29 +18,37 @@ function App() {
     const rendered = todos.map((todo) =>
       todo.id === id ? { ...todo, todo: newTitle, priority: newPriority } : todo
     );
-    // const rendered = todos.map((todo) => {
-    //   if (todo.id === id) {
-    //     if (todo.priority != "") {
-    //       return { ...todo, todo: newTitle, priority: newPriority };
-    //     } else {
-    //       return { ...todo, todo: newTitle, priority: todo.priority };
-    //     }
-    //   }
-    //   return todo;
-    // });
-
-    console.log(rendered);
     setTodos(rendered);
   };
+  // const lowPriotyTodos = todos.filter((todo) => todo.priority === "low");
   return (
     <div className="App">
       <TodoForm onSubmit={handleTodoForm} />
-      <TodoList onEdit={onEdit} todosList={todos} onDelete={onDelete} />
       <div className="todo__cards">
-        <TodoCard priority="Low" />
-        <TodoCard priority="Medium" />
-        <TodoCard priority="High" />
-        <TodoCard priority="Urgent" />
+        <TodoCard
+          onEdit={onEdit}
+          onDelete={onDelete}
+          todos={todos}
+          priority="Low"
+        />
+        <TodoCard
+          onEdit={onEdit}
+          onDelete={onDelete}
+          todos={todos}
+          priority="Medium"
+        />
+        <TodoCard
+          onEdit={onEdit}
+          onDelete={onDelete}
+          todos={todos}
+          priority="High"
+        />
+        <TodoCard
+          onEdit={onEdit}
+          onDelete={onDelete}
+          todos={todos}
+          priority="Urgent"
+        />
       </div>
     </div>
   );

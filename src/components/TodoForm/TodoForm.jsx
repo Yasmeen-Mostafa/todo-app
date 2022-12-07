@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./TodoForm.scss";
 const TodoForm = ({ onSubmit }) => {
   const [todo, setTodo] = useState(""); //state to handle todo change
-  const [priority, setPriority] = useState(""); //state to handle priority change
+  const [priority, setPriority] = useState("urgent"); //state to handle priority change, initial value=>value='urgent'
   //event handler, to handle form submit
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -37,11 +37,9 @@ const TodoForm = ({ onSubmit }) => {
         onChange={onSelectPriority}
         size="md"
         width="15%"
+        value={priority}
         style={{ backgroundColor: "white" }}
       >
-        <option value="" style={{ display: "none" }}>
-          Select priority
-        </option>
         <option value="urgent">Urgent</option>
         <option value="low">Low</option>
         <option value="medium">Medium</option>

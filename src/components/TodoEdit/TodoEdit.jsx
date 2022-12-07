@@ -17,17 +17,15 @@ const TodoEdit = ({ todo, onSubmit }) => {
     setNewPriority(e.target.value);
   };
   return (
-    <form onSubmit={onFormSubmit}>
+    <form className="todo__edit" onSubmit={onFormSubmit}>
       <Input value={newTerm} onChange={onInputChange} />
       <Select
         onChange={onSelectPriority}
         size="md"
-        width="100%%"
+        width="100%"
+        value={newPriority}
         style={{ backgroundColor: "white" }}
       >
-        <option value="" style={{ display: "none" }}>
-          Select priority
-        </option>
         <option value="low">Low</option>
         <option value="urgent">Urgent</option>
         <option value="medium">Medium</option>
