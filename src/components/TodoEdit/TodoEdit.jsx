@@ -12,10 +12,12 @@ const TodoEdit = ({ todo, onSubmit }) => {
     e.preventDefault();
     // onEdit(todo.id, newTerm, newpriority);
     // onSubmit(todo.id, newTerm, newPriority); //send to the method id,newTerm,newPriority
+    console.log(todo);
     onSubmit({
       id: todo.id,
       todo: newData.newTerm,
       priority: newData.newPriority,
+      completed: todo.completed,
     });
   };
   const onInputChange = (e) => {

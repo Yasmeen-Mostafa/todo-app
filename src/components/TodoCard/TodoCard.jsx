@@ -9,7 +9,6 @@ const TodoCard = ({ onEdit, onDelete, priority, todos }) => {
         .map((todo, i) => (
           <TodoShow key={i} onEdit={onEdit} onDelete={onDelete} todo={todo} />
         ))}
-      {/* <TodoShow /> */}
     </div>
   );
 };

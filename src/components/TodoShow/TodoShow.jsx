@@ -2,7 +2,7 @@ import { useState } from "react";
 import TodoEdit from "../TodoEdit/TodoEdit";
 import "./TodoShow.scss";
 const TodoShow = ({ todo, onDelete, onEdit }) => {
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(todo.completed);
   const [edit, setEdit] = useState(false);
   const onDeleteClick = () => {
     onDelete(todo.id);
@@ -12,6 +12,7 @@ const TodoShow = ({ todo, onDelete, onEdit }) => {
   };
   const onTodoClick = () => {
     setCompleted(!completed);
+    onEdit({ ...todo, completed: !completed });
   };
   //callback to close the form in edit after submitting it
   //bad solution
@@ -23,9 +24,10 @@ const TodoShow = ({ todo, onDelete, onEdit }) => {
   }
 
   // better solution, collapse two handlers methods ,called when we submit the form
-  const handleSubmitFromEdit = (id, newTerm, newPriority) => {
+  const handleSubmitFromEdit = (todo) => {
+    console.log(todo);
     setEdit(false); //close the form
-    onEdit(id, newTerm, newPriority); //edit with new term and new priority
+    onEdit(todo); //edit with new term and new priority
   };
   //object with todo,priority
   return (

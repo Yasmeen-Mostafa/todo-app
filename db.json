@@ -1,3 +1,10 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "id": 1,
+      "todo": "aa",
+      "priority": "medium",
+      "completed": true
+    }
+  ]
 }

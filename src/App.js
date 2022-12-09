@@ -19,11 +19,15 @@ function App() {
   const handleTodoForm = async (todo) => {
     //recieve todo object from TodoForm
     if (todo.todo && todo.priority) {
-      id = id++; //increment id for every new todo
-      await axios.post(baseUrl, JSON.stringify({ ...todo, id }), {
-        headers: { "Content-Type": "application/json" },
-      });
-      setTodos([...todos, todo]);
+      id = ++id; //increment id for every new todo
+      await axios.post(
+        baseUrl,
+        JSON.stringify({ ...todo, id, completed: false }),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      setTodos([...todos, { ...todo, id, completed: false }]);
     }
   };
   const onDelete = async (id) => {
